@@ -64,6 +64,22 @@ Paulo Henrique Rodrigues Pinheiro (paulohrpinheiro):
 
 ## Mão na massa
 
+https://github.com/paulohrpinheiro/Brazilian-FederalDocuments
+
+    ➜  Brazilian-FederalDocuments git:(master) tree
+    .
+    ├── camelia.png
+    ├── doc
+    ├── lib
+    │   └── Brazilian
+    │       └── FederalDocuments.pm6
+    ├── LICENSE
+    ├── META6.json
+    ├── PITCHME.md
+    └── t
+        └── 001_basic.t
+
+
 ---
 
 ## Links úteis
