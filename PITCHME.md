@@ -1,4 +1,4 @@
-# Criando um módulo em Perl6 »ö« sem saber Perl6 »ö«
+# Criando um módulo em Perl6 sem saber Perl6
 
 ![Camelia »ö«](camelia.png)
 
