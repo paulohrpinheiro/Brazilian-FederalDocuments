@@ -3,6 +3,20 @@ use v6.c;
 unit module FederalDocuments;
 
 
+class TooManyDigits is Exception {
+    method message() {
+        "The given document number has too many digits"
+    }
+}
+
+
+class InvalidDocument is Exception {
+    method message() {
+        "The given document number is invalid"
+    }
+}
+
+
 role Document {
     has Int $.number;
     has Bool $.is-valid = False;
