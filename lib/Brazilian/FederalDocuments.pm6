@@ -4,29 +4,18 @@ use v6.c;
 unit module FederalDocuments;
 
 
-class TooManyDigits is Exception {
-    method message() {
-        "The given document number has too many digits"
-    }
-}
-
-
-class InvalidDocument is Exception {
-    method message() {
-        "The given document number is invalid"
-    }
-}
-
-
 role Document {
     has $.number;
+    has $!is_valid = False;
     has @!weight-masc-first-digit;
     has @!weight-masc-second-digit;
 
+    method valid() {
+        $!is_valid
+    }
+
     method verify {
-        if $!number.chars > @!weight-masc-second-digit.elems + 1 {
-            FederalDocuments::TooManyDigits.new.throw
-        }
+        return if $!number.chars > @!weight-masc-second-digit.elems + 1;
 
         my $total-len = @!weight-masc-second-digit.elems + 1;
         my @digits = (("0" x ($total-len - $.number.chars)) ~ $.number).split(/\d/, :v, :skip-empty);
@@ -34,9 +23,10 @@ role Document {
         my $first-digit  = sum(@digits Z* @!weight-masc-first-digit)  * 10 % 11;
         my $second-digit = sum(@digits Z* @!weight-masc-second-digit) * 10 % 11;
 
-        if @digits[$total-len - 2] != $first-digit || @digits[$total-len - 1] != $second-digit {
-            FederalDocuments::InvalidDocument.new.throw
-        }
+        return if @digits[$total-len - 2] != $first-digit;
+        return if @digits[$total-len - 1] != $second-digit;
+
+        $!is_valid = True;
     }
 }
 
