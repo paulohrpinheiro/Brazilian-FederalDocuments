@@ -5,16 +5,9 @@ use lib 'lib';
 
 use Brazilian::FederalDocuments;
 
-plan 4;
+
+plan 2;
 
 
-my $cpf = FederalDocuments::CPF.new;
-
-ok $cpf ~~ FederalDocuments::Document;
-nok $cpf.is-valid;
-
-
-my $cnpj = FederalDocuments::CNPJ.new;
-
-ok $cnpj ~~ FederalDocuments::Document;
-nok $cpf.is-valid;
+ok FederalDocuments::CPF  ~~ FederalDocuments::Document;
+ok FederalDocuments::CNPJ ~~ FederalDocuments::Document;
