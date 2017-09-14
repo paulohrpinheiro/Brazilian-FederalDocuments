@@ -1,5 +1,7 @@
 # Brazilian::FederalDocuments
 
+[![Build Status](https://travis-ci.org/paulohrpinheiro/Brazilian-FederalDocuments.svg)](https://travis-ci.org/paulohrpinheiro/Brazilian-FederalDocuments)
+
 ## Synopsis
 
     use Brazilian::FederalDocuments;
