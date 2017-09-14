@@ -18,9 +18,7 @@ role Document {
     method verify {
         $!valid = False;
 
-        say 'antes do if';
         return if $!number.chars > @!weight-masc-second-digit.elems + 1;
-        say 'depois do if';
 
         my $total-len = @!weight-masc-second-digit.elems + 1;
         @!digits = (("0" x ($total-len - $.number.chars)) ~ $.number).split(/\d/, :v, :skip-empty);
@@ -28,7 +26,6 @@ role Document {
         my $first-digit  = sum(@!digits Z* @!weight-masc-first-digit)  * 10 % 11;
         my $second-digit = sum(@!digits Z* @!weight-masc-second-digit) * 10 % 11;
 
-        say $first-digit, $second-digit;
         return if @!digits[$total-len - 2] != $first-digit;
         return if @!digits[$total-len - 1] != $second-digit;
 
