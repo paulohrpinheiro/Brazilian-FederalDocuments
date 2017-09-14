@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/paulohrpinheiro/Brazilian-FederalDocuments.svg)](https://travis-ci.org/paulohrpinheiro/Brazilian-FederalDocuments)
 
+[![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/paulohrpinheiro/Brazilian-FederalDocuments/master?grs=github&t=white)
+
 ## Synopsis
 
     use Brazilian::FederalDocuments;
