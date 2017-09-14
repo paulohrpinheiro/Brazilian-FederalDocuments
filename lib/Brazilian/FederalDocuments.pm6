@@ -6,27 +6,33 @@ unit module FederalDocuments;
 
 role Document {
     has $.number;
-    has $!is_valid = False;
+    has $!valid = False;
     has @!weight-masc-first-digit;
     has @!weight-masc-second-digit;
+    has @!digits;
 
-    method valid() {
-        $!is_valid
+    method is-valid() {
+        $!valid
     }
 
     method verify {
+        $!valid = False;
+
+        say 'antes do if';
         return if $!number.chars > @!weight-masc-second-digit.elems + 1;
+        say 'depois do if';
 
         my $total-len = @!weight-masc-second-digit.elems + 1;
-        my @digits = (("0" x ($total-len - $.number.chars)) ~ $.number).split(/\d/, :v, :skip-empty);
+        @!digits = (("0" x ($total-len - $.number.chars)) ~ $.number).split(/\d/, :v, :skip-empty);
 
-        my $first-digit  = sum(@digits Z* @!weight-masc-first-digit)  * 10 % 11;
-        my $second-digit = sum(@digits Z* @!weight-masc-second-digit) * 10 % 11;
+        my $first-digit  = sum(@!digits Z* @!weight-masc-first-digit)  * 10 % 11;
+        my $second-digit = sum(@!digits Z* @!weight-masc-second-digit) * 10 % 11;
 
-        return if @digits[$total-len - 2] != $first-digit;
-        return if @digits[$total-len - 1] != $second-digit;
+        say $first-digit, $second-digit;
+        return if @!digits[$total-len - 2] != $first-digit;
+        return if @!digits[$total-len - 1] != $second-digit;
 
-        $!is_valid = True;
+        $!valid = True;
     }
 }
 
@@ -36,7 +42,7 @@ class CPF does Document {
         @!weight-masc-first-digit  = <10 9 8 7 6 5 4 3 2>;
         @!weight-masc-second-digit = <11 10 9 8 7 6 5 4 3 2>;
 
-        self.verify;
+        self.verify();
     }
 }
 
@@ -46,6 +52,6 @@ class CNPJ does Document {
         @!weight-masc-first-digit  = <5 4 3 2 9 8 7 6 5 4 3 2>;
         @!weight-masc-second-digit = <6 5 4 3 2 9 8 7 6 5 4 3 2>;
 
-        self.verify;
+        self.verify();
     }
 }

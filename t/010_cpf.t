@@ -12,8 +12,8 @@ plan 4;
 my $cpf-do-temer = 6931987887;
 
 
-lives-ok { FederalDocuments::CPF.new(number => $cpf-do-temer) }, "Valid CPF as number";
-lives-ok { FederalDocuments::CPF.new(number => "$cpf-do-temer") }, "Valid CPF as string";
+ok FederalDocuments::CPF.new(number => $cpf-do-temer).is-valid, "Valid CPF as number";
+ok FederalDocuments::CPF.new(number => "$cpf-do-temer").is-valid, "Valid CPF as string";
 
-throws-like { FederalDocuments::CPF.new(number => $cpf-do-temer + 1) }, FederalDocuments::InvalidDocument, "Invalid CPF as number";
-throws-like { FederalDocuments::CPF.new(number => "{$cpf-do-temer}9") }, FederalDocuments::InvalidDocument, "Invalid CPF as string";
+nok FederalDocuments::CPF.new(number => $cpf-do-temer + 1).is-valid, "Invalid CPF as number";
+nok FederalDocuments::CPF.new(number => "{$cpf-do-temer}9").is-valid, "Invalid CPF as string";
