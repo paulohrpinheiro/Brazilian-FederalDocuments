@@ -2,4 +2,3 @@ language: perl6
 
 perl6:
     - latest
-    - 6.c
