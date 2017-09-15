@@ -38,7 +38,7 @@ Paulo Henrique Rodrigues Pinheiro (paulohrpinheiro):
 
 > Fuçar no Perl6, sem muita paciência.
 
-Consttruir um módulo simples, e publicá-lo:
+Construir um módulo simples, e publicá-lo:
 
 Brazilian::FederalDocuments
 
