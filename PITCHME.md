@@ -115,10 +115,14 @@ https://github.com/paulohrpinheiro/Brazilian-FederalDocuments
 
 ### O Core do módulo
 
++++
+
     method verify {
         $!valid = False;
 
-        return if $!number.chars > @!weight-masc-second-digit.elems + 1;
+        if $!number.chars > @!weight-masc-second-digit.elems + 1 {
+            return
+        }
 
         my $total-len = @!weight-masc-second-digit.elems + 1;
         @!digits = (
