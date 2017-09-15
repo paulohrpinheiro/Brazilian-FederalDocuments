@@ -99,7 +99,7 @@ https://github.com/paulohrpinheiro/Brazilian-FederalDocuments
 
     role Document {
         has $.number;
-        has $!valid = False;
+        has Bool $!valid = False;
         has @!weight-masc-first-digit;
         has @!weight-masc-second-digit;
         has @!digits;
