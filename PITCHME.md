@@ -48,7 +48,7 @@ https://github.com/paulohrpinheiro/Brazilian-FederalDocuments
 
 ## Mão na massa
 
-    ➜  Brazilian-FederalDocuments git:(master) tree
+    ➜ tree
     .
     ├── lib
     │   └── Brazilian
@@ -70,15 +70,12 @@ https://github.com/paulohrpinheiro/Brazilian-FederalDocuments
     use lib 'lib';
     use Brazilian::FederalDocuments;
 
-    plan 4;
+    plan 2;
 
     my $cpf-do-temer = 6931987887;
 
-    ok FederalDocuments::CPF.new(number => $cpf-do-temer).is-valid, "Valid CPF as number";
-    ok FederalDocuments::CPF.new(number => "$cpf-do-temer").is-valid, "Valid CPF as string";
-
-    nok FederalDocuments::CPF.new(number => $cpf-do-temer + 1).is-valid, "Invalid CPF as number";
-    nok FederalDocuments::CPF.new(number => "{$cpf-do-temer}9").is-valid, "Invalid CPF as string";
+    ok  True,  "descrição";
+    nok False, "outra descrição";
 
 ---
 
@@ -115,32 +112,13 @@ https://github.com/paulohrpinheiro/Brazilian-FederalDocuments
 
 ### O Core do módulo
 
-+++
+    @!digits = (
+        ("0" x ($total-len - $.number.chars)) ~ $.number
+    ).split(/\d/, :v, :skip-empty);
 
-    method verify {
-        $!valid = False;
-
-        if $!number.chars > @!weight-masc-second-digit.elems + 1 {
-            return
-        }
-
-        my $total-len = @!weight-masc-second-digit.elems + 1;
-        @!digits = (
-            ("0" x ($total-len - $.number.chars)) ~ $.number
-        ).split(/\d/, :v, :skip-empty);
-
-        my $first-digit  = sum(
-            @!digits Z* @!weight-masc-first-digit
-        )  * 10 % 11;
-        my $second-digit = sum(
-            @!digits Z* @!weight-masc-second-digit
-        ) * 10 % 11;
-
-        return if @!digits[$total-len - 2] != $first-digit;
-        return if @!digits[$total-len - 1] != $second-digit;
-
-        $!valid = True;
-     }
+    my $first-digit  = sum(
+        @!digits Z* @!weight-masc-first-digit
+    )  * 10 % 11;
 
 ---
 
