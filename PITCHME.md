@@ -113,6 +113,8 @@ https://github.com/paulohrpinheiro/Brazilian-FederalDocuments
 
 ---
 
+### O Core do módulo
+
         method verify {
             $!valid = False;
 
