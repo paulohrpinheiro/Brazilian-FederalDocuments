@@ -18,47 +18,31 @@ Paulo Henrique Rodrigues Pinheiro (paulohrpinheiro):
 
 ---
 
-## O quê mesmo?
+### A cara do Perl6
 
-> Aprender Perl6, sem muita paciência.
-
-* Características
-* História
-* Documentação
-* Mão na massa
-
----
-
-## Características
-
-* programação funcional
-* orientação a objetos
-* *scripting*
-* Unicode na veia!
-
-+++
-
-### Programação Funcional
-
-+++
-
-### Orientação a Objetos
-
-+++
-
-### Scripting
-
-+++
-
-### Unicode na veia!
+    ➜  ~ perl6
+    > my @primes = ^∞ .grep: *.is-prime;
+    [...]
+    > say "1001ˢᵗ prime is @primes[1000]";
+    1001ˢᵗ prime is 7927
+    > my @p = 1,2,4,8...Inf
+    [...]
+    > @p[4..10]
+    (16 32 64 128 256 512 1024)
+    > (½ +1)²
+    2.25
 
 ---
 
-## História
+## Fazer o quê?
 
----
+> Fuçar no Perl6, sem muita paciência.
 
-## Documentação
+Consttruir um módulo simples, e publicá-lo:
+
+Brazilian::FederalDocuments
+
+https://github.com/paulohrpinheiro/Brazilian-FederalDocuments
 
 ---
 
@@ -68,14 +52,11 @@ https://github.com/paulohrpinheiro/Brazilian-FederalDocuments
 
     ➜  Brazilian-FederalDocuments git:(master) tree
     .
-    ├── camelia.png
-    ├── doc
     ├── lib
     │   └── Brazilian
     │       └── FederalDocuments.pm6
     ├── LICENSE
     ├── META6.json
-    ├── PITCHME.md
     └── t
         └── 001_basic.t
 
