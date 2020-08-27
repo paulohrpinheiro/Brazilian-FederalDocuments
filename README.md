@@ -3,6 +3,12 @@
 [![Build Status](https://travis-ci.org/paulohrpinheiro/Brazilian-FederalDocuments.svg)](https://travis-ci.org/paulohrpinheiro/Brazilian-FederalDocuments)
 [![GitPitch](https://gitpitch.com/assets/badge.svg)](https://gitpitch.com/paulohrpinheiro/Brazilian-FederalDocuments/master?grs=github&t=white)
 
+## Warning
+
+This module was created for a presentation in the [Guru-SP](https://www.gurusp.org/) group:
+
+https://www.youtube.com/watch?v=Kgy7Qa7LgGs
+
 ## Synopsis
 
     use Brazilian::FederalDocuments;
